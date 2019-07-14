@@ -86,7 +86,7 @@ export default class Options extends Component {
             this.props.gotoResultComp(this.state.score);
         }
 
-        console.log("hey")
+       
 
 
 
