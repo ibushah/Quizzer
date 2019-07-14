@@ -1,26 +1,27 @@
-import React,{Component} from 'react'
-import {View,Text,StyleSheet} from 'react-native';
+import React, { Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native';
 
 
 
 export default class Question extends Component {
 
-    render()
-    {
+    render() {
+        const {ques,index}=this.props
+        console.log("keyyyy",this.props.index)
         return (
-            
-                <Text style={style.container}>
-                    {this.props.ques}
-                </Text>
-            
+
+            <Text style={style.container}>
+        Q{index+1}) {ques}
+            </Text>
+
         )
     }
 
 }
 
 
-const style=StyleSheet.create({
-    container:{
-        color:'#0F75BD',textAlign:'center',fontSize:20,fontStyle:'italic',fontWeight:'bold'
+const style = StyleSheet.create({
+    container: {
+        color: '#0F75BD', textAlign: 'center', fontSize: 20, fontStyle: 'italic', fontWeight: 'bold'
     }
 })

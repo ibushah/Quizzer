@@ -55,7 +55,7 @@ export default class About extends Component {
 
     if (detection.faces.length) {
 
-      this.props.navigation.navigate('Front')
+      this.props.navigation.navigate('Quiz')
       
     } else {
       alert("No face found,try again!");
