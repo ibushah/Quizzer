@@ -17,9 +17,9 @@ export default class Home extends Component {
 
   componentDidMount()
   {
-    setInterval(()=>
+    setTimeout(()=>
     {
-      this.props.navigation.navigate("Quiz")
+      this.props.navigation.navigate("Camera")
     },4000)
   }
 

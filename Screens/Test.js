@@ -17,7 +17,7 @@ export default class Test extends Component {
     super(props);
 
     this.state = {
-      questions: [],
+      questions:this.props.navigation.state.params.questions,
       key: 0,
       showResultComponent: false,
       score: 0
@@ -27,22 +27,7 @@ export default class Test extends Component {
 
   }
 
-  componentDidMount() {
-    getQuestions().then((data) => {
-      this.setState({
-        questions: data.results
-      })
-      console.log(data.results)
-    })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-
-
-
-
+  
   next(score) {
     if (this.state.key <= 8) {
       this.setState({
@@ -60,11 +45,19 @@ export default class Test extends Component {
 
   playAgain()
   {
-    this.setState({
-      showResultComponent:false,
-      key:0,
-      score:0
+    getQuestions().then((data) => {
+      this.setState({
+        questions: data.results,
+        showResultComponent:false,
+        key:0,
+        score:0
+      })
+     
     })
+      .catch((error) => {
+        console.log(error)
+      })
+
   }
 
   render() {

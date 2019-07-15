@@ -7,7 +7,7 @@ export default class Question extends Component {
 
     render() {
         const {ques,index}=this.props
-        console.log("keyyyy",this.props.index)
+        
         return (
 
             <Text style={style.container}>

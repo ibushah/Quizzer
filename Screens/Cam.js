@@ -5,6 +5,7 @@ import { Camera } from 'expo-camera';
 import { Entypo, MaterialCommunityIcons, MaterialIcons, Ionicons } from '@expo/vector-icons'
 import { Thumbnail } from 'native-base';
 import * as FaceDetector from 'expo-face-detector';
+import { getQuestions } from '../Config/getQuestions'
 
 
 
@@ -18,7 +19,8 @@ export default class About extends Component {
       hasCameraPermission: null,
       type: Camera.Constants.Type.back,
       flashMode: Camera.Constants.FlashMode.off,
-      img: 'https://img.icons8.com/material-outlined/42/000000/camera.png'
+      img: 'https://img.icons8.com/material-outlined/42/000000/camera.png',
+      questions:[]
     };
 
 
@@ -28,6 +30,16 @@ export default class About extends Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
+
+    getQuestions().then((data) => {
+      this.setState({
+        questions: data.results
+      })
+     
+    })
+      .catch((error) => {
+        console.log(error)
+      })
 
   }
 
@@ -55,7 +67,7 @@ export default class About extends Component {
 
     if (detection.faces.length) {
 
-      this.props.navigation.navigate('Quiz')
+      this.props.navigation.navigate('Quiz',{questions:this.state.questions})
       
     } else {
       alert("No face found,try again!");
@@ -64,6 +76,7 @@ export default class About extends Component {
 
 
   };
+ 
 
   
 
